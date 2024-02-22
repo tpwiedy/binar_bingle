@@ -23,4 +23,5 @@ const User = sequelize.define('User', {
   },
 });
 
+// User.sync({ force: true, alter: true });
 export default User;

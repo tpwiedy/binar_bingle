@@ -1,14 +1,13 @@
-import { validate } from '../validation/validation.js';
-import { registerUserValidation } from '../validation/user-validation.js';
 import { ResponseError } from '../error/response-error.js';
-import { User } from '../model/user-model.js';
-import sequelize from 'sequelize';
+import { registerUserValidation } from '../validation/user-validation.js';
+import { validate } from '../validation/validation.js';
+import sequelize from '../application/database.js';
 import bcrypt from 'bcrypt';
 
 const register = async (request) => {
   const user = validate(registerUserValidation, request);
 
-  const countUser = await User.count({
+  const countUser = await sequelize.user.count({
     where: {
       username: user.username,
     },
@@ -24,7 +23,7 @@ const register = async (request) => {
     data: user,
     select: {
       username: true,
-      name: true,
+      email: true,
     },
   });
 };

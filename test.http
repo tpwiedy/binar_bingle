@@ -1,0 +1,13 @@
+-- Active: 1704365151744@@127.0.0.1@5433@bingle
+
+POST http://localhost:3000/api/users
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "wiedytp",
+  "password" : "rahasia",
+  "email": "wiedy@binar.com"
+
+
+}

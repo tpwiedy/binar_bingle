@@ -5,7 +5,7 @@ import { config } from 'dotenv';
 // Load environment variables from .env file
 config();
 
-export const sequelize = new Sequelize(process.env.DATABASE_URL, {
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
   logging: (msg) => logger.info(msg),
 });
 
@@ -19,3 +19,5 @@ sequelize
   .catch((error) => {
     logger.error('Unable to connect to the database:', error);
   });
+
+export default sequelize;
